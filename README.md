@@ -6,7 +6,7 @@ Random galaxy, solar system and planet generation in Untiy3D.
 
 ## Setup and customization
 
-You will find a working solar system generation in the SampleScene. Every customizable option is seen in the ```SolarSystemGenerator``` component of the SolarSystem GameObject.
+You will find a working solar system generation in the SampleScene. Every customizable option is seen in the ```Solar SystemGenerator``` component of the SolarSystem GameObject.
 
 ## Goals
 Current goals of this project and their status:
