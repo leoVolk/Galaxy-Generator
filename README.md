@@ -4,6 +4,9 @@ Random galaxy, solar system and planet generation in Untiy3D.
 
 ![Screenshot](https://github.com/leoVolk/Galaxy-Voyage/blob/master/Capture.PNG?raw=true "Screenshot")
 
+## Setup and customization
+
+You will find a working solar system generation in the SampleScene. Every customizable option is seen in the "SolarSystemGenerator" component of the SolarSystem GameObject.
 
 ## Goals
 Current goals of this project and their status:
@@ -17,7 +20,7 @@ Current goals of this project and their status:
 
   ### Doing
    * Better random destribution of planets in the solar system
-   * Random size of stars, planets and satellites based on the somewhat realistic data and distance to star
+   * Random size of stars, planets and satellites based on the distance to their star
    * GUI
   ### Todo
    * Generation of galaxies
