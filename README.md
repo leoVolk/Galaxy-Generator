@@ -22,9 +22,12 @@ Current goals of this project and their status:
    * Better random destribution of planets in the solar system
    * Random size of stars, planets and satellites based on the distance to their star
    * GUI
+   
   ### Todo
    * Generation of galaxies
    * Seemless transition from galaxy map to a solar system when clicked
+   * Color of stars based on their size and temeprature
+   *
 
 ## Future
 Currently this is just for fun and exploring the topic of random generation. I might come back to it later with ideas to make it a full fletched game
