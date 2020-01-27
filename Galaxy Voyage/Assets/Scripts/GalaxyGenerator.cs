@@ -20,6 +20,9 @@ public class GalaxyGenerationSettings{
 
     [Range(0, 100)]
     public int MaxGalaxies = 100;
+
+    [Range(10, 50)]
+    public float MinDistanceBetweenGalaxy = 10;
 }
 
 
@@ -43,6 +46,8 @@ public class GalaxyGenerator : MonoBehaviour
             foreach(SolarSystem g in _galaxy.SolarSystems){
                 Destroy(g.gameObject);
             }
+
+            _galaxy.SolarSystems.Clear();
         }
 
         //Set galaxy name
@@ -56,6 +61,10 @@ public class GalaxyGenerator : MonoBehaviour
         for(int i = 0; i  < solarSystems; i++){
 
             Vector2 pos = Random.insideUnitCircle * Settings.Radius;
+
+            while(CheckForGalaxies(pos)){
+                pos = Random.insideUnitCircle * Settings.Radius;
+            }
 
             GameObject solarSystemGameObject = Instantiate(GalaxyPrefabs.SolarSystemPrefab, new Vector3(pos.x, pos.y, 0), Quaternion.identity, this.transform);
 
@@ -76,6 +85,9 @@ public class GalaxyGenerator : MonoBehaviour
             }
         }
 
+    }
 
+    public bool CheckForGalaxies(Vector2 v){
+        return Physics.OverlapSphere(v, Settings.MinDistanceBetweenGalaxy).Length > 0;
     }
 }

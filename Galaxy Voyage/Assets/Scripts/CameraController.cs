@@ -18,7 +18,6 @@ public class CameraController : MonoBehaviour
     public CameraSettings Settings;
     private Camera _camera;
 
-
     private float _size = 5;
 
     private LineRenderer[] _lineRenderer;
@@ -27,6 +26,8 @@ public class CameraController : MonoBehaviour
     {
         _camera = this.GetComponent<Camera>();
         _lineRenderer = GameObject.FindObjectsOfType<LineRenderer>();
+
+        _size = _camera.orthographicSize;
     }
 
     // Update is called once per frame
@@ -36,10 +37,6 @@ public class CameraController : MonoBehaviour
             _size -= Input.GetAxis("Mouse ScrollWheel") * Settings.ZoomSpeed;
             _size = Mathf.Clamp(_size, Settings.MinZoom, Settings.MaxZoom);
 
-            foreach(LineRenderer lr in _lineRenderer){
-                lr.startWidth = (lr.startWidth * _size)*.25f;
-                lr.endWidth  = (lr.endWidth * _size)*.25f;
-            }
 
             _camera.orthographicSize = _size;
         }

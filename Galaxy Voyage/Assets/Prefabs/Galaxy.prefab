@@ -50,7 +50,8 @@ MonoBehaviour:
   Settings:
     Radius: 100
     MinGalaxies: 1
-    MaxGalaxies: 1
+    MaxGalaxies: 30
+    MinDistanceBetweenGalaxy: 10
 --- !u!114 &4953933086202348758
 MonoBehaviour:
   m_ObjectHideFlags: 0

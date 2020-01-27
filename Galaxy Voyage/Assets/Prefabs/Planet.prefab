@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
+  Size: {x: 0, y: 0, z: 0}
   OrbitPeriod: 365.25
   PlanetDayPeriod: 24
   Sattelites: []
