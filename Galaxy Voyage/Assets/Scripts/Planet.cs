@@ -7,6 +7,7 @@ public class Planet : MonoBehaviour
 {
     [Header("Planet Properties")]
     public string Name;
+    public Vector3 Size;
 
     [Tooltip("Time for a planet to complete a rotation around its star")]
     public float OrbitPeriod = 365.25f;
@@ -18,10 +19,13 @@ public class Planet : MonoBehaviour
     public List<Satellite> Sattelites;
 
     protected SolarSystem _solarSystem;
+    protected Transform _body;
 
     void Start()
     {
+        _body = transform.GetChild(0);
         _solarSystem = SolarSystem._Instance;
+        _body.transform.localScale = Size;
     }
 
     // Update is called once per frame

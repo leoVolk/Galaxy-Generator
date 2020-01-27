@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 143419296112747230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 143419297453003596}
   m_Father: {fileID: 0}
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c66f3bc485d6be459f69e8585e23432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
   OrbitPeriod: 365.25
   PlanetDayPeriod: 24
   Sattelites: []

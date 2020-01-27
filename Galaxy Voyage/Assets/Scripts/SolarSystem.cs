@@ -30,7 +30,7 @@ public class SolarSystem : MonoBehaviour
     void Update()
     {
         foreach(Planet p in Planets){
-            p.transform.RotateAround(Vector3.zero, Vector3.back, (((365.25f / p.OrbitPeriod)/360) * Time.deltaTime) * TimeScaleSettings.TimeScale);
+            p.transform.RotateAround(transform.position, Vector3.back, (((365.25f / p.OrbitPeriod)/360) * Time.deltaTime) * TimeScaleSettings.TimeScale);
         }
     }
 }

@@ -36,9 +36,10 @@ public class CameraController : MonoBehaviour
             _size -= Input.GetAxis("Mouse ScrollWheel") * Settings.ZoomSpeed;
             _size = Mathf.Clamp(_size, Settings.MinZoom, Settings.MaxZoom);
 
-            /* foreach(LineRenderer lr in _lineRenderer){
+            foreach(LineRenderer lr in _lineRenderer){
                 lr.startWidth = (lr.startWidth * _size)*.25f;
-            } */
+                lr.endWidth  = (lr.endWidth * _size)*.25f;
+            }
 
             _camera.orthographicSize = _size;
         }

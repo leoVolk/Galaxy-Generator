@@ -6,15 +6,14 @@ public class Star : MonoBehaviour
 {
     [Header("Star Properties")]
     public string Name;
-    // Start is called before the first frame update
+    
+    public Vector3 Size;
+
+    private Transform _body;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _body = transform.GetChild(0);
+        _body.transform.localScale = Size;
     }
 }

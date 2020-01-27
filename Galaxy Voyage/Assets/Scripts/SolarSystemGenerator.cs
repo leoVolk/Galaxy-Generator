@@ -29,8 +29,19 @@ public class GenerationSettings{
     [Tooltip("100 = 10.000.000 km")]
     public float MinDistanceBetween = 100;
 
-    [Tooltip("100 = 10.000.000 km")]
+    [Tooltip("1000 = 10.000.000.000 km")]
     public float MaxDistanceBetween = 1000;
+
+    [Range(10, 100)]
+    public float MaxStarSize = 100;
+    [Range(10, 100)]
+    public float MinStarSize = 10;
+
+    [Range(0.5f, 10)]
+    public float MaxPlanetSize = 10;
+
+    [Range(0.5f, 10)]
+    public float MinPlanetSize = .5f;
 }
 
 public class SolarSystemGenerator : MonoBehaviour
@@ -46,6 +57,8 @@ public class SolarSystemGenerator : MonoBehaviour
 
         InitSolarSystem();
     }
+
+    
     [Button("Generate Solar System")]
     public void InitSolarSystem(){
         System.Random rand = new System.Random();
@@ -60,11 +73,17 @@ public class SolarSystemGenerator : MonoBehaviour
 
 
         if(_solarSystem.Star == null){
-            GameObject star = Instantiate(ComponentPrefabs.StarPrefab, Vector3.zero, Quaternion.identity, this.transform);
-            _solarSystem.Star = star.GetComponent<Star>();
+            GameObject starGameObject = Instantiate(ComponentPrefabs.StarPrefab, Vector3.zero, Quaternion.identity, this.transform);
 
+            Star star = starGameObject.GetComponent<Star>();
             
-            _solarSystem.Star.Name = StarName.Generate(rand);
+            star.Name = StarName.Generate(rand);
+
+            float starSize = Random.Range(Settings.MinStarSize, Settings.MaxStarSize) * Settings.SizeScale;
+            star.Size = new Vector3(starSize, starSize, starSize);
+
+            _solarSystem.Star = star;
+            
         }
 
         int planetAmount = Random.Range(Settings.MinPlanets, Settings.MaxPlanets);
@@ -85,6 +104,10 @@ public class SolarSystemGenerator : MonoBehaviour
 
             //set Planet Name
             planet.Name = StarName.Generate(rand);
+
+            //set Planet Size
+            float planetSize = Random.Range(Settings.MinPlanetSize, Settings.MaxPlanetSize) * ((distance/10000)/Settings.SizeScale);
+            planet.Size = new Vector3(planetSize,planetSize,planetSize);
 
             planet.OrbitPeriod = (distance / Settings.SizeScale) * 2;
             _solarSystem.Planets.Add(planet);
