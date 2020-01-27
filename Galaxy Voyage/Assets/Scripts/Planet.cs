@@ -26,6 +26,8 @@ public class Planet : MonoBehaviour
         _body = transform.GetChild(0);
         _solarSystem = SolarSystem._Instance;
         _body.transform.localScale = Size;
+
+        transform.name = Name;
     }
 
     // Update is called once per frame

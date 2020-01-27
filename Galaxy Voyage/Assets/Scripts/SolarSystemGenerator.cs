@@ -4,15 +4,16 @@ using UnityEngine;
 using NaughtyAttributes;
 
 [System.Serializable]
-public class ComponentPrefabs{
+public class SolarSystemPrefabs{
     public GameObject StarPrefab;
     public GameObject PlanetPrefab;
     public GameObject SattelitePrefab;
 }
 
 [System.Serializable]
-public class GenerationSettings{
+public class SolarSystemGenerationSetting{
     
+    [HideInInspector]
     public float SizeScale = .01f;
     public int MaxPlanets = 10;
     public int MinPlanets = 6; 
@@ -46,16 +47,14 @@ public class GenerationSettings{
 
 public class SolarSystemGenerator : MonoBehaviour
 {
-    public GenerationSettings Settings;
-    public ComponentPrefabs ComponentPrefabs;
+    public SolarSystemGenerationSetting Settings;
+    public SolarSystemPrefabs SolarSystemPrefabs;
 
     private SolarSystem _solarSystem;
     // Start is called before the first frame update
     void Awake()
     {
         _solarSystem = GetComponent<SolarSystem>();
-
-        InitSolarSystem();
     }
 
     
@@ -72,19 +71,21 @@ public class SolarSystemGenerator : MonoBehaviour
         }
 
 
-        if(_solarSystem.Star == null){
-            GameObject starGameObject = Instantiate(ComponentPrefabs.StarPrefab, Vector3.zero, Quaternion.identity, this.transform);
-
-            Star star = starGameObject.GetComponent<Star>();
-            
-            star.Name = StarName.Generate(rand);
-
-            float starSize = Random.Range(Settings.MinStarSize, Settings.MaxStarSize) * Settings.SizeScale;
-            star.Size = new Vector3(starSize, starSize, starSize);
-
-            _solarSystem.Star = star;
-            
+        if(_solarSystem.Star != null){
+            Destroy(_solarSystem.Star.gameObject);
         }
+
+        GameObject starGameObject = Instantiate(SolarSystemPrefabs.StarPrefab, transform.position, Quaternion.identity, this.transform);
+
+        Star star = starGameObject.GetComponent<Star>();
+            
+        star.Name = StarName.Generate(rand);
+
+        float starSize = Random.Range(Settings.MinStarSize, Settings.MaxStarSize) * Settings.SizeScale;
+        star.Size = new Vector3(starSize, starSize, starSize);
+
+        _solarSystem.Star = star;
+            
 
         int planetAmount = Random.Range(Settings.MinPlanets, Settings.MaxPlanets);
         float lastPlanetDistance = 0f;
@@ -95,7 +96,7 @@ public class SolarSystemGenerator : MonoBehaviour
             float distance = Random.Range(Settings.MinDistanceBetween, Settings.MaxDistanceBetween) + lastPlanetDistance;
             lastPlanetDistance = distance;
             
-            GameObject planetGameObject = Instantiate(ComponentPrefabs.PlanetPrefab, 
+            GameObject planetGameObject = Instantiate(SolarSystemPrefabs.PlanetPrefab, 
                                             new Vector3(distance * Settings.SizeScale, distance * Settings.SizeScale, 0), 
                                             Quaternion.identity, this.transform);
 
@@ -123,23 +124,29 @@ public class SolarSystemGenerator : MonoBehaviour
                 float lastSatelliteDistance = 0f;
 
                 for(int j = 0; j < satelliteAmount; j++){
-                    float distanceToPlanet = ((distance * Settings.SizeScale)+ lastSatelliteDistance) / 20;
+                    float distanceToPlanet = (((distance * Settings.SizeScale) + lastSatelliteDistance) + planetSize) / 20;
 
                     lastSatelliteDistance = distanceToPlanet;
                     
-                    GameObject satelliteGameObject = Instantiate(ComponentPrefabs.SattelitePrefab, 
+                    GameObject satelliteGameObject = Instantiate(SolarSystemPrefabs.SattelitePrefab, 
                                                         planetGameObject.transform.position + new Vector3(distanceToPlanet, 0, distanceToPlanet),
                                                         Quaternion.identity, planet.transform);
 
                     Satellite satellite = satelliteGameObject.GetComponent<Satellite>();
-                    satellite.OrbitPeriod = distanceToPlanet * 1000;
+                    satellite.OrbitPeriod = distanceToPlanet * planetSize * 100;
                     satellite.Orbiter = planet;
 
                     //set Satellite name
                     satellite.Name = StarName.Generate(rand);
+                    
+                    float satelliteSize = Random.Range(Settings.MinPlanetSize, Settings.MaxPlanetSize) * ((distanceToPlanet/1000)/Settings.SizeScale);
+                    satellite.Size = new Vector3(satelliteSize, satelliteSize, satelliteSize);
+
                     planet.Sattelites.Add(satellite);
                 }
             }
         }
+    
+        _solarSystem.AllignPlanets();
     }
 }

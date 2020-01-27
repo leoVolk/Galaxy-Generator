@@ -9,13 +9,16 @@ public class ScaleSettings{
 
 public class SolarSystem : MonoBehaviour
 {
+    [Header("Solar System Properties")]
+    public string Name;
+
+    public Vector3 Position;
+
     public static SolarSystem _Instance = null;
     public ScaleSettings TimeScaleSettings;
 
-    [HideInInspector]
     public List<Planet> Planets;
     
-    [HideInInspector]
     public Star Star;
 
     // Start is called before the first frame update
@@ -26,11 +29,22 @@ public class SolarSystem : MonoBehaviour
         }
     }
 
+
     // Update is called once per frame
     void Update()
     {
         foreach(Planet p in Planets){
-            p.transform.RotateAround(transform.position, Vector3.back, (((365.25f / p.OrbitPeriod)/360) * Time.deltaTime) * TimeScaleSettings.TimeScale);
+            if(p.gameObject.activeSelf){
+                p.transform.RotateAround(transform.position, Vector3.back, (((365.25f / p.OrbitPeriod)/360) * Time.deltaTime) * TimeScaleSettings.TimeScale);
+            }
+        }
+    }
+
+    public void AllignPlanets(){
+        foreach(Planet p in Planets){
+            p.transform.GetChild(0).GetChild(0).GetComponent<TrailRenderer>().enabled = false;
+            p.transform.RotateAround(transform.position, Vector3.back, Random.Range(0, 360));
+            p.transform.GetChild(0).GetChild(0).GetComponent<TrailRenderer>().enabled = true;
         }
     }
 }

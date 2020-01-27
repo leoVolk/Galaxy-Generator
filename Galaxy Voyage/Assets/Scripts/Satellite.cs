@@ -9,6 +9,6 @@ public class Satellite : Planet
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(Orbiter.transform.position, Vector3.back, ((365.25f / OrbitPeriod) * Time.deltaTime) * _solarSystem.TimeScaleSettings.TimeScale);
+        transform.RotateAround(Orbiter.transform.position, Vector3.back, (((365.25f / OrbitPeriod) /360) * Time.deltaTime) * _solarSystem.TimeScaleSettings.TimeScale);
     }
 }
