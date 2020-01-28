@@ -6,10 +6,12 @@ Random galaxy, solar system and planet generation in Untiy3D.
 
 ## Setup and customization
 
-You will find a working solar system generation in the SampleScene. Every customizable option is seen in the ```Solar SystemGenerator``` component of the solarsystem gameObject.
+You will find a working galaxy generation in the SampleScene. Every customizable option is seen in the ```GalaxyGenerator``` component of the galaxy gameObject.
+To customize planets, satellites and solar systems, please refer to their corresponding prefab in the Prefabs folder.
 
-## Goals
-Current goals of this project and their status:
+
+## Features 
+Current features of this project
   ### Done
    * Random generation of a solar system with planets and planet satellites
    * Planet rotation around the center star of their solar system based on their distance to it
@@ -17,17 +19,10 @@ Current goals of this project and their status:
    * Satellite rotation around their parent planet
    * Rotation of satellite around their axis
    * Random Name Generation for stars, planets and satellites
+   * Random galaxy generation
+   * Connecting paths between near solar systems in a galaxy
+   * Color of stars is connected to their heat
 
-  ### Doing
-   * Better random destribution of planets in the solar system
-   * Random size of stars, planets and satellites based on the distance to their star
-   * GUI
-   
-  ### Todo
-   * Generation of galaxies
-   * Seemless transition from galaxy map to a solar system when clicked
-   * Color of stars based on their size and temeprature
-   *
 
 ## Future
 Currently this is just for fun and exploring the topic of random generation. I might come back to it later with ideas to make it a full fletched game
