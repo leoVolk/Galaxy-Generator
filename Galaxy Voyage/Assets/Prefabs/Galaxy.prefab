@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4953933086202348757}
   - component: {fileID: 4953933086202348759}
   - component: {fileID: 4953933086202348758}
+  - component: {fileID: 4992834972794939663}
   m_Layer: 0
   m_Name: Galaxy
   m_TagString: Untagged
@@ -47,11 +48,13 @@ MonoBehaviour:
   GalaxyPrefabs:
     SolarSystemPrefab: {fileID: 6201569620528965804, guid: ae8cea1d87bafad48b31b102afb4d15d,
       type: 3}
+    BlackHolePrefab: {fileID: 5583389939249709687, guid: 6b5f21c519116c943b37116621b773eb,
+      type: 3}
   Settings:
-    Radius: 100
-    MinGalaxies: 1
-    MaxGalaxies: 30
-    MinDistanceBetweenGalaxy: 10
+    Radius: 250
+    MinGalaxies: 5
+    MaxGalaxies: 100
+    MinDistanceBetweenGalaxy: 20
 --- !u!114 &4953933086202348758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,5 +68,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
+  Size: {x: 0, y: 0, z: 0}
   Position: {x: 0, y: 0, z: 0}
+  BlackHole: {fileID: 0}
   SolarSystems: []
+--- !u!114 &4992834972794939663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4953933086202348756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd1644ef23bc5e4bbbc60dadb459a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

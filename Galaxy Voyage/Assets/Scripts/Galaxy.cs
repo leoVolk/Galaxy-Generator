@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(GalaxyGenerator))]
-public class Galaxy : MonoBehaviour
-{
-    public string Name;
-    public Vector3 Position;
+public class Galaxy : SpaceObject
+{    public BlackHole BlackHole;
     public List<SolarSystem> SolarSystems;
 
 }

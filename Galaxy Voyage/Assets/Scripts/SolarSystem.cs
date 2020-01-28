@@ -7,13 +7,8 @@ public class ScaleSettings{
     public float TimeScale = 1;
 }
 
-public class SolarSystem : MonoBehaviour
+public class SolarSystem : SpaceObject
 {
-    [Header("Solar System Properties")]
-    public string Name;
-
-    public Vector3 Position;
-
     public static SolarSystem _Instance = null;
     public ScaleSettings TimeScaleSettings;
 

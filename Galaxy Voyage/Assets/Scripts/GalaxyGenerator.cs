@@ -7,6 +7,7 @@ using NaughtyAttributes;
 [System.Serializable]
 public class GalaxyPrefabs{
     public GameObject SolarSystemPrefab;
+    public GameObject BlackHolePrefab;
 }
 
 
@@ -31,7 +32,6 @@ public class GalaxyGenerator : MonoBehaviour
     public GalaxyPrefabs GalaxyPrefabs;
     public GalaxyGenerationSettings Settings;
 
-
     private Galaxy _galaxy;
     void Awake(){
         _galaxy = GetComponent<Galaxy>();
@@ -48,12 +48,23 @@ public class GalaxyGenerator : MonoBehaviour
             }
 
             _galaxy.SolarSystems.Clear();
+
+            if(_galaxy.BlackHole != null){
+                Destroy(_galaxy.BlackHole.gameObject);
+            }
         }
+
+
+        GameObject blackHoleGameObject = Instantiate(GalaxyPrefabs.BlackHolePrefab, transform.position, Quaternion.identity, this.transform);
+        BlackHole blackHole = blackHoleGameObject.GetComponent<BlackHole>();
+        _galaxy.BlackHole = blackHole;
 
         //Set galaxy name
         System.Random rand = new System.Random();
         _galaxy.Name = StarName.Generate(rand);
         this.name = _galaxy.Name;
+
+        _galaxy.Size = new Vector2(Settings.Radius, Settings.Radius);
 
         int solarSystems = Random.Range(Settings.MinGalaxies, Settings.MaxGalaxies);
 
@@ -84,6 +95,8 @@ public class GalaxyGenerator : MonoBehaviour
                 p.gameObject.SetActive(false);
             }
         }
+
+        GetComponent<GalaxyNavigator>().Connect(_galaxy.SolarSystems);
 
     }
 

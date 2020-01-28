@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
-public class Planet : MonoBehaviour
+public class Planet : SpaceObject
 {
     [Header("Planet Properties")]
-    public string Name;
-    public Vector3 Size;
 
     [Tooltip("Time for a planet to complete a rotation around its star")]
     public float OrbitPeriod = 365.25f;

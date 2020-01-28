@@ -789,15 +789,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4953933086202348759, guid: c183685a5244e9b4bbc164f41ac69d51,
+    - target: {fileID: 4992834972794939663, guid: c183685a5244e9b4bbc164f41ac69d51,
         type: 3}
-      propertyPath: Settings.MaxGalaxies
-      value: 100
+      propertyPath: Settings.Curve.m_Curve.Array.size
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4953933086202348759, guid: c183685a5244e9b4bbc164f41ac69d51,
+    - target: {fileID: 4992834972794939663, guid: c183685a5244e9b4bbc164f41ac69d51,
         type: 3}
-      propertyPath: Settings.MinGalaxies
-      value: 5
+      propertyPath: Settings.Curve.m_Curve.Array.data[0].value
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992834972794939663, guid: c183685a5244e9b4bbc164f41ac69d51,
+        type: 3}
+      propertyPath: Settings.Curve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992834972794939663, guid: c183685a5244e9b4bbc164f41ac69d51,
+        type: 3}
+      propertyPath: Settings.Curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992834972794939663, guid: c183685a5244e9b4bbc164f41ac69d51,
+        type: 3}
+      propertyPath: Settings.Curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992834972794939663, guid: c183685a5244e9b4bbc164f41ac69d51,
+        type: 3}
+      propertyPath: Settings.Curve.m_Curve.Array.data[1].tangentMode
+      value: 34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c183685a5244e9b4bbc164f41ac69d51, type: 3}
