@@ -59,7 +59,7 @@ public class SolarSystemGenerator : MonoBehaviour
 
     
     [Button("Generate Solar System")]
-    public void InitSolarSystem(){
+    public void GenerateSolarSystem(){
         System.Random rand = new System.Random();
 
         //for generating a new solar system on the fly

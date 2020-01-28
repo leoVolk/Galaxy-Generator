@@ -36,11 +36,11 @@ public class GalaxyGenerator : MonoBehaviour
     void Awake(){
         _galaxy = GetComponent<Galaxy>();
 
-        InitGalaxy();
+        GenerateGalaxy();
     }
 
     [Button("Generate Galaxy")]
-    public void InitGalaxy(){
+    public void GenerateGalaxy(){
 
         if(_galaxy.SolarSystems != null){
             foreach(SolarSystem g in _galaxy.SolarSystems){
@@ -78,7 +78,7 @@ public class GalaxyGenerator : MonoBehaviour
 
             _galaxy.SolarSystems.Add(solarSystem);
 
-            solarSystemGenerator.InitSolarSystem();
+            solarSystemGenerator.GenerateSolarSystem();
 
             foreach(Planet p in solarSystem.Planets){
                 p.gameObject.SetActive(false);
