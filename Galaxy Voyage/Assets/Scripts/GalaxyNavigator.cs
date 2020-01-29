@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+public class NavigationSettings{
+    public float ZoomInSpeed = 4;
+    public float ZoomOutSpeed = 4;
+
+    public float ZoomIntensitiy = 10;
+}
+
+[System.Serializable]
 public class LineRendererSettings{
     public AnimationCurve Curve;
     public Gradient Gradient;
@@ -11,8 +19,84 @@ public class LineRendererSettings{
 [System.Serializable]
 public class GalaxyNavigator : MonoBehaviour
 {
+    
     [SerializeField]
-    public LineRendererSettings Settings;
+    public LineRendererSettings LineRendererSettings;
+    
+    public NavigationSettings NavigationSettings;
+
+    public Camera Camera;
+
+    private Galaxy _galaxy;
+    private SolarSystem _currentSolarSytem;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _galaxy = GetComponent<Galaxy>();
+
+        if(Camera == null)
+            Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //TODO: Implement input class
+        if(Input.GetKeyDown(KeyCode.Mouse0)){
+            
+            Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit)){
+                SolarSystem solarSystem; 
+                if(hit.collider.transform.parent.transform.parent.TryGetComponent<SolarSystem>(out solarSystem)){
+                    NavigateToSolarSystem(solarSystem);
+                }
+            }
+        }
+    }
+
+    public void NavigateToSolarSystem(SolarSystem solarSystem){
+
+        _currentSolarSytem = solarSystem;
+
+        Camera.transform.Translate(solarSystem.transform.position);
+        Camera.GetComponent<CameraController>().Size = NavigationSettings.ZoomIntensitiy;
+        Camera.orthographicSize = NavigationSettings.ZoomIntensitiy; 
+
+        _galaxy.BlackHole.gameObject.SetActive(false);
+        
+
+        foreach(SolarSystem s in _galaxy.SolarSystems){
+            if(s != _currentSolarSytem){
+                s.gameObject.SetActive(false);
+            }else{
+                s.GetComponent<LineRenderer>().widthMultiplier = 0;
+                foreach(Planet p in s.Planets){
+                    p.gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
+    public void NavigateOutOfSolarSystem(){
+        Camera.GetComponent<CameraController>().Size = 65;
+        Camera.orthographicSize = 65; 
+
+        _galaxy.BlackHole.gameObject.SetActive(false);
+        
+        foreach(SolarSystem s in _galaxy.SolarSystems){
+            if(s != _currentSolarSytem){
+                s.gameObject.SetActive(true);
+            }else{
+                s.GetComponent<LineRenderer>().widthMultiplier = 1;
+                foreach(Planet p in s.Planets){
+                    p.gameObject.SetActive(false);
+                }
+            }
+        }
+    }
     
     public void Connect(List<SolarSystem> solarSystems){
         for(int i = 0; i < solarSystems.Count; i++){
@@ -46,8 +130,8 @@ public class GalaxyNavigator : MonoBehaviour
 
         lr.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
         
-        lr.colorGradient = Settings.Gradient;
-        lr.widthCurve = Settings.Curve;
+        lr.colorGradient = LineRendererSettings.Gradient;
+        lr.widthCurve = LineRendererSettings.Curve;
 
         lr.SetPosition(0, currentSolarSystem.transform.position);
         lr.SetPosition(1, b);

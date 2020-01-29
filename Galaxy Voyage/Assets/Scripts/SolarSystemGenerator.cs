@@ -97,7 +97,7 @@ public class SolarSystemGenerator : MonoBehaviour
             lastPlanetDistance = distance;
             
             GameObject planetGameObject = Instantiate(SolarSystemPrefabs.PlanetPrefab, 
-                                            new Vector3(distance * Settings.SizeScale, distance * Settings.SizeScale, 0), 
+                                            star.transform.position + new Vector3(distance * Settings.SizeScale, distance * Settings.SizeScale, 0), 
                                             Quaternion.identity, this.transform);
 
 

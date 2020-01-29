@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [System.Serializable]
 public class ScaleSettings{
@@ -22,6 +23,11 @@ public class SolarSystem : SpaceObject
         if(_Instance == null){
             _Instance = this;
         }
+    }
+
+    void Start()
+    {
+        transform.Find("Name_Text").GetComponent<TextMeshPro>().text = this.Name;
     }
 
 

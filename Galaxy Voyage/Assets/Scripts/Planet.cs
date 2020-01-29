@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using TMPro;
 
 public class Planet : SpaceObject
 {
@@ -21,17 +22,20 @@ public class Planet : SpaceObject
 
     void Start()
     {
-        _body = transform.GetChild(0);
+        _body = transform.Find("Body");
         _solarSystem = SolarSystem._Instance;
         _body.transform.localScale = Size;
 
         transform.name = Name;
+
+
+        transform.Find("Name_Text").GetComponent<TextMeshPro>().text = this.Name;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.back, 24/PlanetDayPeriod * _solarSystem.TimeScaleSettings.TimeScale * Time.deltaTime);
+        _body.transform.Rotate(Vector3.back, 24/PlanetDayPeriod * _solarSystem.TimeScaleSettings.TimeScale * Time.deltaTime);
     }
 
 }

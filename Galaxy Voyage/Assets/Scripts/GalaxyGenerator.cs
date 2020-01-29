@@ -16,10 +16,10 @@ public class GalaxyGenerationSettings{
     [Range(0, 1000)]
     public float Radius = 100;
 
-    [Range(0, 100)]
+    [Range(1, 100)]
     public int MinGalaxies = 10;
 
-    [Range(0, 100)]
+    [Range(1, 100)]
     public int MaxGalaxies = 100;
 
     [Range(10, 50)]
