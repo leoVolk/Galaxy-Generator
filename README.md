@@ -2,7 +2,7 @@
 
 Random galaxy, solar system and planet generation in Untiy3D Version 2019.3. 
 
-![Screenshot](https://github.com/leoVolk/Galaxy-Voyage/blob/master/Capture.PNG?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/leoVolk/Galaxy-Voyage/master/Screenshot.PNG "Screenshot")
 
 ## Setup and customization
 
