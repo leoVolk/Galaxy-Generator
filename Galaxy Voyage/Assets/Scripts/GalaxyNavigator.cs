@@ -51,7 +51,9 @@ public class GalaxyNavigator : MonoBehaviour
             if(Physics.Raycast(ray, out hit)){
                 SolarSystem solarSystem; 
                 if(hit.collider.transform.parent.transform.parent.TryGetComponent<SolarSystem>(out solarSystem)){
-                    NavigateToSolarSystem(solarSystem);
+                    if(_currentSolarSytem != solarSystem){
+                        NavigateToSolarSystem(solarSystem);
+                    }
                 }
             }
         }
@@ -61,7 +63,7 @@ public class GalaxyNavigator : MonoBehaviour
 
         _currentSolarSytem = solarSystem;
 
-        Camera.transform.Translate(solarSystem.transform.position);
+        Camera.transform.position = new Vector3(_currentSolarSytem.transform.position.x, _currentSolarSytem.transform.position.y, -10);
         Camera.GetComponent<CameraController>().Size = NavigationSettings.ZoomIntensitiy;
         Camera.orthographicSize = NavigationSettings.ZoomIntensitiy; 
 
