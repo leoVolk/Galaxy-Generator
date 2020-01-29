@@ -1,6 +1,6 @@
 # Galaxy-Voyage
 
-Random galaxy, solar system and planet generation in Untiy3D. 
+Random galaxy, solar system and planet generation in Untiy3D Version 2019.3. 
 
 ![Screenshot](https://github.com/leoVolk/Galaxy-Voyage/blob/master/Capture.PNG?raw=true "Screenshot")
 
