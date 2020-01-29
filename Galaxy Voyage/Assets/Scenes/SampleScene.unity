@@ -1091,6 +1091,21 @@ PrefabInstance:
       propertyPath: TimeScale
       value: 100000
       objectReference: {fileID: 0}
+    - target: {fileID: 4953933086202348759, guid: c183685a5244e9b4bbc164f41ac69d51,
+        type: 3}
+      propertyPath: Settings.Radius
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953933086202348759, guid: c183685a5244e9b4bbc164f41ac69d51,
+        type: 3}
+      propertyPath: Settings.MinDistanceBetweenGalaxy
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953933086202348759, guid: c183685a5244e9b4bbc164f41ac69d51,
+        type: 3}
+      propertyPath: Settings.MinGalaxies
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c183685a5244e9b4bbc164f41ac69d51, type: 3}
 --- !u!1001 &6826806711510086151
@@ -1104,6 +1119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Settings.MaxZoom
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826806710551093105, guid: 9136bc507fd2bf74fbe438cb0816edff,
+        type: 3}
+      propertyPath: Settings.ZoomSpeed
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6826806710551093107, guid: 9136bc507fd2bf74fbe438cb0816edff,
         type: 3}
@@ -1159,6 +1179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826806710551093108, guid: 9136bc507fd2bf74fbe438cb0816edff,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6826806710551093110, guid: 9136bc507fd2bf74fbe438cb0816edff,
         type: 3}

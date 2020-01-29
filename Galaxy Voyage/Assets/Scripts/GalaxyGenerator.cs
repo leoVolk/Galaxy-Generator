@@ -68,13 +68,15 @@ public class GalaxyGenerator : MonoBehaviour
 
         int solarSystems = Random.Range(Settings.MinGalaxies, Settings.MaxGalaxies);
 
+        List<Vector3> positions = Spiral.GenerateSpiral();
+
         //Generate solar systems of galaxy
         for(int i = 0; i  < solarSystems; i++){
-
-            Vector2 pos = Random.insideUnitCircle * Settings.Radius;
+            int random = Random.Range(0, (Spiral.iterations * 2)- 1);
+            Vector2 pos = new Vector2(positions[random].x, positions[random].z) + Random.insideUnitCircle*Settings.Radius;
 
             while(CheckForGalaxies(pos)){
-                pos = Random.insideUnitCircle * Settings.Radius;
+                pos = new Vector2(positions[random].x, positions[random].z) + Random.insideUnitCircle*Settings.Radius;
             }
 
             GameObject solarSystemGameObject = Instantiate(GalaxyPrefabs.SolarSystemPrefab, new Vector3(pos.x, pos.y, 0), Quaternion.identity, this.transform);

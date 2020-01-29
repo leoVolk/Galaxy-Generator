@@ -36,7 +36,6 @@ public class CameraController : MonoBehaviour
             Size -= Input.GetAxis("Mouse ScrollWheel") * Settings.ZoomSpeed;
             Size = Mathf.Clamp(Size, Settings.MinZoom, Settings.MaxZoom);
 
-
             _camera.orthographicSize = Size;
         }
 
@@ -51,6 +50,8 @@ public class CameraController : MonoBehaviour
                         : Input.GetAxis("Mouse Y") *Time.deltaTime * Settings.MovementSpeed * Size;
 
             transform.Translate(new Vector3(x, y, 0));
+
+            Size = Mathf.Clamp(Size, Settings.MinZoom, Settings.MaxZoom);
         }
     }
 }

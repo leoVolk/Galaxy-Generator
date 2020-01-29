@@ -83,10 +83,9 @@ public class GalaxyNavigator : MonoBehaviour
     }
 
     public void NavigateOutOfSolarSystem(){
+        
         Camera.GetComponent<CameraController>().Size = 65;
         Camera.orthographicSize = 65; 
-
-        _galaxy.BlackHole.gameObject.SetActive(false);
         
         foreach(SolarSystem s in _galaxy.SolarSystems){
             if(s != _currentSolarSytem){
@@ -98,6 +97,8 @@ public class GalaxyNavigator : MonoBehaviour
                 }
             }
         }
+
+        _galaxy.BlackHole.gameObject.SetActive(true);
     }
     
     public void Connect(List<SolarSystem> solarSystems){
