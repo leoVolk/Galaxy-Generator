@@ -9,8 +9,11 @@ To customize planets, satellites and solar systems, please refer to their corres
 
 ## Screenshots
 
-![Screenshot](https://raw.githubusercontent.com/leoVolk/Galaxy-Voyage/master/Screenshot.PNG "Screenshot")
 
+### Galaxy Map
+![Screenshot](https://raw.githubusercontent.com/leoVolk/Galaxy-Voyage/master/Screenshot.PNG "Galaxy Map")
+
+### Solar System Map
 ![Screenshot](https://raw.githubusercontent.com/leoVolk/Galaxy-Voyage/master/Screenshot_2.PNG "Screenshot 2")
 ## Features 
 Current features of this project
