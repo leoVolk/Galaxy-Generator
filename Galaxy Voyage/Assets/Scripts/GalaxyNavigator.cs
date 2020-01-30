@@ -25,53 +25,29 @@ public class GalaxyNavigator : MonoBehaviour
     
     public NavigationSettings NavigationSettings;
 
-    public Camera Camera;
 
     private Galaxy _galaxy;
-    private SolarSystem _currentSolarSytem;
 
     // Start is called before the first frame update
     void Start()
     {
         _galaxy = GetComponent<Galaxy>();
-
-        if(Camera == null)
-            Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //TODO: Implement input class
-        if(Input.GetKeyDown(KeyCode.Mouse0)){
-            
-            Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
 
-            if(Physics.Raycast(ray, out hit)){
-                SolarSystem solarSystem; 
-                if(hit.collider.transform.parent.transform.parent.TryGetComponent<SolarSystem>(out solarSystem)){
-                    if(_currentSolarSytem != solarSystem){
-                        NavigateToSolarSystem(solarSystem);
-                    }
-                }
-            }
-        }
-    }
+    public void NavigateToSolarSystem(SolarSystem solarSystem, Camera camera, SolarSystem currentSolarSystem){
 
-    public void NavigateToSolarSystem(SolarSystem solarSystem){
+        currentSolarSystem = solarSystem;
 
-        _currentSolarSytem = solarSystem;
-
-        Camera.transform.position = new Vector3(_currentSolarSytem.transform.position.x, _currentSolarSytem.transform.position.y, -10);
-        Camera.GetComponent<CameraController>().Size = NavigationSettings.ZoomIntensitiy;
-        Camera.orthographicSize = NavigationSettings.ZoomIntensitiy; 
+        camera.transform.position = new Vector3(currentSolarSystem.transform.position.x, currentSolarSystem.transform.position.y, -10);
+        camera.GetComponent<CameraController>().Size = NavigationSettings.ZoomIntensitiy;
+        camera.orthographicSize = NavigationSettings.ZoomIntensitiy; 
 
         _galaxy.BlackHole.gameObject.SetActive(false);
         
 
         foreach(SolarSystem s in _galaxy.SolarSystems){
-            if(s != _currentSolarSytem){
+            if(s != currentSolarSystem){
                 s.gameObject.SetActive(false);
             }else{
                 s.GetComponent<LineRenderer>().widthMultiplier = 0;
@@ -82,13 +58,13 @@ public class GalaxyNavigator : MonoBehaviour
         }
     }
 
-    public void NavigateOutOfSolarSystem(){
-        
-        Camera.GetComponent<CameraController>().Size = 65;
-        Camera.orthographicSize = 65; 
+    public void NavigateOutOfSolarSystem(Camera camera, SolarSystem currentSolarSystem){
+
+        camera.GetComponent<CameraController>().Size = 65;
+        camera.orthographicSize = 65; 
         
         foreach(SolarSystem s in _galaxy.SolarSystems){
-            if(s != _currentSolarSytem){
+            if(s != currentSolarSystem){
                 s.gameObject.SetActive(true);
             }else{
                 s.GetComponent<LineRenderer>().widthMultiplier = 1;
@@ -138,5 +114,9 @@ public class GalaxyNavigator : MonoBehaviour
 
         lr.SetPosition(0, currentSolarSystem.transform.position);
         lr.SetPosition(1, b);
+    }
+
+    public void FollowPlanet(Camera camera){
+
     }
 }

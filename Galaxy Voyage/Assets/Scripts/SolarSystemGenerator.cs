@@ -100,7 +100,6 @@ public class SolarSystemGenerator : MonoBehaviour
                                             star.transform.position + new Vector3(distance * Settings.SizeScale, distance * Settings.SizeScale, 0), 
                                             Quaternion.identity, this.transform);
 
-
             Planet planet = planetGameObject.GetComponent<Planet>();
 
             //set Planet Name
@@ -112,8 +111,6 @@ public class SolarSystemGenerator : MonoBehaviour
 
             planet.OrbitPeriod = (distance / Settings.SizeScale) * 2;
             _solarSystem.Planets.Add(planet);
-
-
 
             //determine if planet has satellites orbiting it and instantiate them
             bool hasSatellite = Random.Range(Settings.ChanceOfSatellite, 10) <= Settings.ChanceOfSatellite;
