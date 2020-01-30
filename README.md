@@ -2,14 +2,16 @@
 
 Random galaxy, solar system and planet generation in Untiy3D Version 2019.3. 
 
-![Screenshot](https://raw.githubusercontent.com/leoVolk/Galaxy-Voyage/master/Screenshot.PNG "Screenshot")
-
 ## Setup and customization
 
 You will find a working galaxy generation in the SampleScene. Every customizable option is seen in the ```GalaxyGenerator``` component of the galaxy gameObject.
 To customize planets, satellites and solar systems, please refer to their corresponding prefab in the Prefabs folder.
 
+## Screenshots
 
+![Screenshot](https://raw.githubusercontent.com/leoVolk/Galaxy-Voyage/master/Screenshot.PNG "Screenshot")
+
+![Screenshot](https://raw.githubusercontent.com/leoVolk/Galaxy-Voyage/master/Screenshot_2.PNG "Screenshot 2")
 ## Features 
 Current features of this project
   ### Done
