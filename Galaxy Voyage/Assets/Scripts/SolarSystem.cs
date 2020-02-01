@@ -34,8 +34,8 @@ public class SolarSystem : SpaceObject
     // Update is called once per frame
     void Update()
     {
-        foreach(Planet p in Planets){
-            if(p.gameObject.activeSelf){
+        if(transform.GetChild(0).gameObject.activeSelf){
+            foreach(Planet p in Planets){
                 p.transform.RotateAround(transform.position, Vector3.back, (((365.25f / p.OrbitPeriod)/360) * Time.deltaTime) * TimeScaleSettings.TimeScale);
             }
         }
@@ -46,6 +46,10 @@ public class SolarSystem : SpaceObject
             p.transform.GetChild(0).GetChild(0).GetComponent<TrailRenderer>().enabled = false;
             p.transform.RotateAround(transform.position, Vector3.back, Random.Range(0, 360));
             p.transform.GetChild(0).GetChild(0).GetComponent<TrailRenderer>().enabled = true;
+
+            foreach(Satellite s in p.Sattelites){
+                s.transform.RotateAround(transform.position, Vector3.back, Random.Range(0, 360));
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ public class UIComponents{
     public RectTransform SolarSystemInfoPanel;
     public TextMeshProUGUI SolarSystemName;
     public TextMeshProUGUI SolarSystemPlanets;
+    public TextMeshProUGUI TimeScaleText;
 }
 
 public class GUI : MonoBehaviour
@@ -60,7 +61,11 @@ public class GUI : MonoBehaviour
             }
         }
 
-        Navigator.NavigateToSolarSystem(clickedSystem, Camera, _currentSolarSytem);
+        
+    }
+
+    public void OnSolarSystemNavigate(){
+        Navigator.NavigateToSolarSystem(_currentSolarSytem, Camera, _currentSolarSytem);
     }
 
     public void OnSolarSystemInspect(){
@@ -79,5 +84,9 @@ public class GUI : MonoBehaviour
 
     public void OnPlanetLeave(){
 
+    }
+
+    public void OnTimeScaleUpdate(float t){
+        UI.TimeScaleText.text = t == 0 ? "1" : (t * 100000).ToString("#.##");
     }
 }

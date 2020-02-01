@@ -18,4 +18,8 @@ public class Galaxy : SpaceObject
             s.TimeScaleSettings.TimeScale = TimeScale;
         }
     }
+
+    public void OnTimeScaleUpdate(float t){
+        TimeScale = t == 0 ? 0 : (t * 100000);
+    }
 }

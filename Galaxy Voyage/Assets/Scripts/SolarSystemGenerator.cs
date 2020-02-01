@@ -120,6 +120,7 @@ public class SolarSystemGenerator : MonoBehaviour
 
                 float lastSatelliteDistance = 0f;
 
+                //instantiate satellite
                 for(int j = 0; j < satelliteAmount; j++){
                     float distanceToPlanet = (((distance * Settings.SizeScale) + lastSatelliteDistance) + planetSize) / 20;
 

@@ -13,17 +13,19 @@ public class GalaxyPrefabs{
 
 [System.Serializable]
 public class GalaxyGenerationSettings{
-    [Range(0, 1000)]
-    public float Radius = 100;
 
-    [Range(1, 100)]
+    [Range(1, 300)]
     public int MinGalaxies = 10;
 
-    [Range(1, 100)]
+    [Range(1, 300)]
     public int MaxGalaxies = 100;
 
     [Range(10, 50)]
     public float MinDistanceBetweenGalaxy = 10;
+
+    [Tooltip("This will change the radius around a position a star can spwan in")]
+    [Range(0, 100)]
+    public float Radius = 40;
 }
 
 

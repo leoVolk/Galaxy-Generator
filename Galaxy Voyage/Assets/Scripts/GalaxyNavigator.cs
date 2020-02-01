@@ -7,7 +7,7 @@ public class NavigationSettings{
     public float ZoomInSpeed = 4;
     public float ZoomOutSpeed = 4;
 
-    public float ZoomIntensitiy = 10;
+    public float ZoomIntensity = 10;
 }
 
 [System.Serializable]
@@ -40,8 +40,9 @@ public class GalaxyNavigator : MonoBehaviour
         currentSolarSystem = solarSystem;
 
         camera.transform.position = new Vector3(currentSolarSystem.transform.position.x, currentSolarSystem.transform.position.y, -10);
-        camera.GetComponent<CameraController>().Size = NavigationSettings.ZoomIntensitiy;
-        camera.orthographicSize = NavigationSettings.ZoomIntensitiy; 
+
+        camera.GetComponent<CameraController>().Size = NavigationSettings.ZoomIntensity;
+        camera.orthographicSize = camera.GetComponent<CameraController>().Size; 
 
         _galaxy.BlackHole.gameObject.SetActive(false);
         
@@ -118,5 +119,10 @@ public class GalaxyNavigator : MonoBehaviour
 
     public void FollowPlanet(Camera camera){
 
+    }
+
+    public IEnumerator Zoom(Vector3 from, Vector3 to, Camera camera){
+        //TODO: Find way to smoothly lerp into solar system
+        yield return null;
     }
 }

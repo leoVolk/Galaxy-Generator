@@ -4,6 +4,7 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
+Galaxy Voyage/Assets/Resources/Modern & Clean GUI
 
 # Visual Studio cache directory
 .vs/
@@ -35,3 +36,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+*.mp3
