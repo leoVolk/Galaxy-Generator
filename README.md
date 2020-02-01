@@ -4,6 +4,8 @@ Random galaxy, solar system and planet generation in Untiy3D Version 2019.3.
 
 ## Setup and customization
 
+As of now, you wont find working UI elements as I started to use a paid asset for these, so there will be missing imgages.
+
 You will find a working galaxy generation in the SampleScene. Every customizable option is seen in the ```GalaxyGenerator``` component of the galaxy gameObject.
 To customize planets, satellites and solar systems, please refer to their corresponding prefab in the Prefabs folder.
 
