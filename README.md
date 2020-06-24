@@ -1,4 +1,4 @@
-# Galaxy-Voyage
+# Galaxy-Generator
 
 Random galaxy, solar system and planet generation in Untiy3D Version 2019.3. 
 
@@ -13,10 +13,10 @@ To customize planets, satellites and solar systems, please refer to their corres
 
 
 ### Galaxy Map
-![Screenshot](https://raw.githubusercontent.com/leoVolk/Galaxy-Voyage/master/Screenshot.PNG "Galaxy Map")
+![Screenshot](https://github.com/leoVolk/Galaxy-Generator/blob/master/Screenshot.PNG?raw=true "Galaxy Map")
 
 ### Solar System Map
-![Screenshot](https://raw.githubusercontent.com/leoVolk/Galaxy-Voyage/master/Screenshot_2.PNG "Screenshot 2")
+![Screenshot](https://github.com/leoVolk/Galaxy-Generator/blob/master/Screenshot_2.PNG?raw=true "Screenshot 2")
 ## Features 
 Current features of this project
   ### Done
